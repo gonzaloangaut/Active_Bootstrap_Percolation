@@ -1,4 +1,156 @@
 \documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=2cm]{geometry}
+
+\title{¿Active Bootstrap? Percolation}
+\author{materia.activa.seca }
+\date{December 2025}
+
 \begin{document}
-	Hola mundo
+	
+	\maketitle
+		
+	We consider a system composed of two cell phenotypes: round (passive) and elongated (motile). The latter can exhibit variable aspect ratios, constrained within the range $\phi$, with $1<\phi<\phi_{max}=2.7$. A novel aspect of our model is the plasticity of cell phenotype: round cells can elongate, and elongated cells can contract. Furthermore, the intrinsic speed of a cell increases linearly with the aspect ratio, vanishing for round cells and reaching unity for those with maximum aspect ratio.
+	
+	The basic idea of elongation is the tendency of cells to deform and migrate when local space is available. On the other hand, elongated cells shrink if they experience enough force. To implement these ideas to our model, we apply the following mechanisms:
+	
+	\begin{itemize}
+		\item A round cell attempts to elongate by sampling a random angle $\theta \in [0, 2 \pi) $. For this direction, we calculate the overlap of the potentially deformed cell with its neighbors. If the overlap is below a defined threshold for all neighbors, the angle becomes a candidate. We repeat this procedure for 10 trials. Finally, we select the candidate direction that minimizes the total overlap. If no candidate satisfies the threshold condition, the cell remains round.
+		\item Elongated cells exhibit two behaviors. They can shrink if the force exerted by neighbors is sufficient to arrest motion in the direction of the intrinsic velocity. If this does not happen, they can try to continue their elongation in the direction of motion.
+	\end{itemize}
+	
+
+	For the initial conditions, the system starts with all cells in the round state, placed randomly. We wait some time for the system to relax and avoid large overlaps before the elongation dynamics begin. Figure \ref{fig:examples} shows examples of the steady state for different system densities.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.8\textwidth]{images/examples.png} %agregue el width
+		\caption{\label{fig:examples} Examples of the steady state for different system densities.}
+	\end{figure}
+	
+	Figure \ref{fig:fraction_cells} displays the fraction of round and elongated cells (where one is the complement of the other) in the steady state as a function of the system density for $N=10.000$ cells. At low densities, the system is dominated by elongated cells (approx. $80\%$). As density increases, the fraction of elongated cells decreases gradually, while the population of round cells grows. Although this variation is smooth at first, an abrupt jump is observed at high densities, ultimately reaching a state where the entire system is composed of round cells.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/fraction_round.png} %agregue el width
+		\caption{\label{fig:fraction_cells} Fraction of round and elongated cells as a function of the density. (Yo sacaría las binarias)}
+	\end{figure}
+	
+	To characterize the spatial organization of the system, we analyze the cluster structure formed by each type of cells. In order to do so, we define that two cells belong to the same cluster if they fulfill two conditions: (i) They are of the same type (both elongated or both round), and (ii) the overlap between them is enough to satisfy the fact that they interact.
+	
+	Figure \ref{fig:cluster_metrics} presents the evolution of different cluster metrics as a function of density. Panel (a) shows the normalized size of the largest cluster ($S_1$). In particular, although elongated cells dominate the system at low densities, they do not form a global percolating structure; their largest cluster saturates at approximately $20\%$ of the size of the system. In contrast, round cells exhibit a clear percolation transition: the giant component grows continuously at first, followed by an abrupt jump to unity at high densities.
+	
+	Another important feature to measure is the second largest cluster. Panel (b) displays the normalized size of the second largest cluster ($S_2$), while panel (c) shows the ratio $\frac{S_2}{S_1}$. For round cells, we observe a peak in $S_2$ that reaches $\approx6\%$ of the system size just before the transition. This indicates that, slightly below the percolation threshold, the system is characterized by the competition of multiple macroscopic clusters. In contrast, for elongated cells, the ratio remains around $\frac{S_2}{S_1} \approx 0.5$ over a wide range, eventually converging to $1$ at high densities as elongated cells become isolated, reflecting a highly fragmented structure without a dominant component.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.8\textwidth]{images/cluster_vs_density_N=10000_label_1.png} %agregue el width
+		\caption{\label{fig:cluster_metrics} Cluster metrics as a function of density for both clusters of elongated and round cells. (a) Largest cluster size ($S_1$). (b) Second largest cluster size. (c) Ratio $\frac{S_2}{S_1}$  (Yo sacaría el número de clusters)}
+	\end{figure}
+	
+	As mentioned above, round cells exhibit a percolation transition. We can see how the largest cluster size vary with density for different values of $N$ in figure \ref{fig:largest_cluster_size}. To gain insight into the nature of this transition, we analyze the susceptibility $\chi$, defined as the fluctuations of the normalized size of the largest cluster $S_1$:
+	
+	\begin{equation}
+		\chi = N(\langle S_1^{2} \rangle - \langle S_1 \rangle^{2})
+	\end{equation}
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/largest_cluster_size_comparison_label_1.png} %agregue el width
+		\caption{\label{fig:largest_cluster_size} Largest cluster size ($S_1$) for different values of $N$.}
+	\end{figure}
+	
+	Figure \ref{fig:susceptibility} shows the susceptibility for different system sizes $N$. It can be observed that for every size, $\chi$ exhibits a pronounced peak near the critical density $\rho\approx0.86$.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/susceptibility_comparison_label_1.png} %agregue el width
+		\caption{\label{fig:susceptibility} Susceptibility ($\chi$) for different values of $N$.}
+	\end{figure}
+	
+	The scaling of the susceptibility peak maximum provides crucial information about the universality class of the transition. For a finite system of size $L$, the peak of $\chi$ near the critical point behaves as $\chi^{max} \propto L^{\gamma/\nu}$. In our case, we have a box of size $L$ in 2D. Therefore, $N \propto L^{2}$, or $L \propto N^{1/2}$, and then $\chi_{st}^{max} \propto N^{\gamma/2\nu}$. Figure \ref{fig:scalling} displays the scaling of the susceptibility peaks with $N$ in a log-log plot. A linear fit yields an effective exponent of $\frac{\gamma}{2\nu}=\frac{4}{3}$.
+		
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/largest_cluster_size_peak_label_1.png} %agregue el width
+		\caption{\label{fig:scalling} Scalling and fit of the susceptibility peaks.}
+	\end{figure}
+	
+	For standard percolation in 2D, the exponent is $\frac{\gamma}{2\nu} \approx 0.896$. This is very different from the value we obtain. Moreover, for a standard discontinuous transition (first-order), the susceptibility is expected to scale linearly with the system volume ($\chi \propto L^{2}\propto N$). Our observed exponent of $\approx 1.33$ is super-extensive (greater than 1). This implies that the fluctuations grow faster than the system size itself, indicating an anomalously violent regime. . More simulations with different system sizes would be useful to refine the precise value of this exponent.
+
+	Looking closely at the susceptibility curves in Figure \ref{fig:susceptibility}, we notice a smaller secondary peak before the main divergence. It is important to determine whether this corresponds to noise or if it is associated with a physical phenomenon in the system.
+
+	To investigate this, we superimpose the susceptibility graph with that of the normalized second largest cluster ($S_2$). We observe that this peak may align with the maximum of the second largest cluster size (or with its decay?). This can suggest that the fluctuation is because of nucleation and competition between macroscopic clusters, just before they merge into the giant component.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/susceptibility_vs_S2_dual_axis.png} %agregue el width
+		\caption{\label{fig:s_2_susceptibility} Susceptibility superimpose with the second largest cluster size.}
+	\end{figure}
+
+	Finally, we analyze the cluster size distribution $n_s$ (excluding the giant component) in the steady state. According to percolation theory, this distribution is expected to exhibit a power-law behavior $n_s(s) \propto s^{-\tau}$ near the critical point $\rho_c$.
+	
+	Figure \ref{fig:distribution} displays these distributions for different densities, with the critical density $\rho_c$ (derived from the susceptibility peak) highlighted in every panel. Panels (a) and (b) correspond to densities below $\rho_c$: (a) for densitiesn significantly below and (b) approaching $\rho_c$. In contrast, panels (c) and (d) show the regime of high densities: (c) slightly above $\rho_c$ and (d) far above the transition.
+
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/cluster_size_distribution.png} %agregue el width
+		\caption{\label{fig:distribution} Cluster size distribution without the giant component.}
+	\end{figure}
+
+	At low densities (a), the distribution follows a power law for small sizes but is truncated by a cut-off at larger sizes. As the density approaches the critical point (b), this cut-off tends to disappear. At $\rho_c$, the cut-off effectively disappears, and the distribution exhibits a pure power-law decay.
+	
+	The physical interpretation may be that below the critical point, the correlation length is finite, so the maximum cluster size is limited. In addition, at low densities, the curve lies slightly above the critical one. This happens because there is a large number of small clusters in the system.
+	
+	At the critical point, fluctuations of all sizes exist. However, once the threshold is crossed (panels c and d), the giant component absorbs most of the cells. Therefore, the distribution of the remaining clusters decays rapidly, leaving only small fragments isolated from the giant structure.
+	
+	If we fit the power-law in the critical density, we obtain $\tau \approx 0.94$ for $N=10.000$, as it is shown in figure \ref{fig:fit_tau}. 
+
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/6_normalized_cluster_distribution_fit_N=10000.png} %agregue el width
+		\caption{\label{fig:fit_tau} Fit of the power law of the cluster size distribution in the critical density.}
+	\end{figure}
+	
+	However, this exponent change with $N$. For example, for $N=5.000$, we obtain $\tau \approx 1.29$. This is due to finite-size effects. The distribution of cluster sizes can be written as
+	
+	$$
+	n_s(\rho) \propto s^{-\tau} f\left(\frac{s}{s_{\xi}}\right),
+	$$
+	
+	where $ f(x) $ is a function that decaes rapidly for $ x>> 1$ and $s_{\xi}$ is a cutoff.
+	Near a critical point:
+	
+	$$
+	s_{\xi} \propto \vert \rho - \rho_{c} \vert^{-1/\sigma}.
+	$$
+		
+	On a finite-size system with $N$ cells ($L \propto \sqrt{N}$):
+	
+	$$
+	s_{\xi} = N^{\frac{1}{2\sigma \nu}} g\left( (\rho - \rho_{c})N^{\frac{1}{2 \nu}} \right).
+	$$
+	
+	where $g$ is a scalling function. At the critical point, $g$ is constant, so:
+	
+	$$
+	n_s(\rho) \propto s^{-\tau} f\left(\frac{s}{N^{\frac{1}{2\sigma \nu}}}\right),
+	$$
+	
+	which implies:
+	
+	$$
+	n_s(\rho) s^{\tau}  \propto f\left(\frac{s}{N^{\frac{1}{2\sigma \nu}}}\right).
+	$$
+	
+	Thus, plotting $ y = n_s(\rho) s^{\tau} $ versus $x=\frac{s}{N^{\alpha}}$ with $\alpha = \frac{1}{2\sigma \nu}$, should collapse curves for different $N$. We can try to vary $\tau$ and $\alpha$ to find the best collapse; the resulting $\tau$. (This is not done yet)
+	
+	In usual percolation, the relation $2<\tau<3$ is typically be satisfied. Therefore, our result is in contrast with usual percolation. This may be associated with the explosive nature of the transition. There are a lot of macroscopic clusters that grow independently, creating an excess of large clusters just before the abrupt formation of the giant component.
+	
+	These results show that, although round cells percolate, the mechanism is not the usual one. The combination of an abrupt jump in the largest cluster size and the power law in the distributions is a key feature of hybrid phase transitions. In percolation, we have found two different type of percolations that can be associated with our problem.
+		
+	On one hand, explosive percolation happens when the system avoids the creation of a giant cluster by minimizng the size of the clusters that are being combined. One example is the product rule: two links are chosen and only the one with the minimum result between the product of each cluster is kept. This can be associated with the appearance of a huge second cluster size before the transition.
+	
+	On the other hand, bootstrap percolation has an analogy with the mechanism that our system follows. In bootstrap percolation, nodes are either active or inactive, and they deactivate if they have less than $k$ active neighbors. The analogy arises if we think of active nodes as round cells. Thus, cells deactivate (elongate) if they have few active neighbors (if they have enough space).
+	
 \end{document}
