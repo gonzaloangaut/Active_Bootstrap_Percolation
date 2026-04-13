@@ -170,18 +170,15 @@ aps,
 		(d) Jamming probability as a function of density.}
 	\end{figure}
 	
-	\section{\label{sec:level3} Structure of Clusters}
+	\section{\label{sec:level3} Spatial Organization and Structure of Clusters}
 	
 	
 	To characterize the spatial organization of the system, we analyze the cluster structure formed by each type of cells. In order to do so, we define that two cells belong to the same cluster if they fulfill two conditions: (i) They are of the same type (both elongated or both round), and (ii) they are close enough to interact, allowing for a small tolerance $\delta$, such that cells that are within a distance slightly larger than the interaction threshold are still considered connected.
 	
-	Figure \ref{fig:cluster_metrics} presents the evolution of several cluster observables as a function of density. Panel (a) shows the normalized size of the largest cluster ($S_1$). At low densities, elongated cells form extended structures, with the largest cluster reaching approximately half of the system size, and exhibiting a maximum around $\rho \approx 0.6$. However, $S_1$ decreases at higher densities, eventually vanishing as the system becomes jammed. In contrast, round cells exhibit a clear percolation transition: the giant component grows continuously at first, followed by an abrupt jump to unity at high densities.
+	Figure \ref{fig:cluster_metrics} presents the evolution of several cluster observables as a function of density for both round and elongated cells. Panel (a) shows the normalized size of the largest cluster, $\frac{S_1}{N}$. At low densities, elongated cells form extended but fragmented structures, with the largest cluster already reaching a significant fraction of the system. As density increases, these structures progressively merge, and $\frac{S_1}{N}$ reaches a maximum around $\rho \approx 0.6$, indicating the emergence of a dominant elongated stream. At higher densities, however, the size of the largest elongated cluster decreases, eventually vanishing as the system becomes jammed.
 	
-	Another important feature to measure is the second largest cluster. Panel (b) displays the normalized size of the second largest cluster ($S_2$), while panel (c) shows the ratio $\frac{S_2}{S_1}$. For round cells, $S_2$ exhibits a peak reaching approximately $6\%$ of the system size just before the transition. This indicates that, slightly below the percolation threshold, the system is characterized by the competition of multiple macroscopic clusters. For elongated cells, the ratio remains relatively large, $S_2/S_1 \approx 0.3$ at $\rho = 0.4$, indicating a fragmented structure without a dominant component. As density increases, this ratio decreases and reaches a minimum in the range $\rho \in [0.6, 0.76]$, consistent with the maximum of $S_1$ and the minimum of $S_2$.
+	In contrast, round cells exhibit a percolation-like transition: the largest cluster grows continuously at first and then undergoes an abrupt increase at high densities, eventually spanning the entire system.
 	
-	Finally, panel (d) shows the mean number of clusters. At low densities, elongated cells form a large number of small clusters, reflecting the presence of many isolated or weakly connected cells. As density increases, the number of clusters decreases while $S_1$ increases, indicating the progressive aggregation into larger structures. Near the transition, the number of clusters drops sharply. In contrast, round cells maintain a relatively constant number of clusters, between $100$ and $200$ (corresponding to $1\%$–$2\%$ of the system size), before collapsing to zero at the transition point.
-	
-
 	\begin{figure}[h]
 		\centering
 		
@@ -220,14 +217,28 @@ aps,
 			(d) Mean number of clusters.}
 	\end{figure}
 	
-	\section{\label{sec:level4} Percolation of round cells}
+	Panels (b) and (c) provide further insight into the evolution of cluster competition. For round cells, the second largest cluster exhibits a noticeable peak, reaching approximately $6\%$ of the system size just before the transition. This indicates an increase in large-scale fluctuations and the presence of sizable secondary structures near the critical region. However, the ratio 
+	$S_2/S_1$ decreases in this same density range, showing that the largest cluster grows even more rapidly and progressively dominates the system as the transition is approached.
 	
-	\subsection{Size of largest cluster and Susceptibility}
+	For elongated cells, the ratio $S_2/S_1$ is relatively large at low densities ($\approx 0.3$), consistent with a fragmented, mosaic-like organization in which several streams coexist. As density increases, this ratio decreases and reaches a minimum in the range $\rho \in [0.6, 0.76]$, signaling the consolidation of a single dominant elongated cluster that governs the collective migration.
 	
-	As mentioned above, round cells exhibit a percolation transition. We can see how the largest cluster size vary with density for different values of $N$ in Fig. \ref{fig:round_percolation} (a). To gain insight into the nature of this transition, we analyze the susceptibility $\chi$, defined as the fluctuations of the normalized size of the largest cluster $S_1$:
+	Finally, panel (d) shows the mean number of clusters. At low densities, elongated cells form a large number of small clusters, reflecting a highly fragmented active phase. As density increases, the number of clusters decreases while $S_1$ increases, indicating progressive coalescence into fewer and larger structures. This behavior is consistent with the formation of a coherent oncostream at intermediate densities. Near the jamming transition, the number of elongated clusters drops sharply due to the progressive loss of activity. 
+	
+	In contrast, round cells maintain a relatively constant number of clusters, between $100$ and $200$ (corresponding to $1\%$–$2\%$ of the system size), before collapsing to zero at the transition point.
+
+	
+	Overall, these results reveal distinct structural regimes in the system. For elongated cells, three main behaviors can be identified. At low densities, the active phase is characterized by a fragmented, mosaic-like organization, with many independent clusters and no clearly dominant structure. As density increases, these clusters progressively merge, and in the range $\rho \approx 0.6–0.7$ a single dominant elongated stream emerges, governing the collective migration. As the system approaches the jamming transition, activity progressively decreases and the elongated structures lose cohesion.
+	
+	For round cells, the system remains spatially heterogeneous over a broad density range, with several finite clusters coexisting. As density increases further, the largest round-cell cluster grows rapidly and eventually dominates the system, anticipating the onset of the jammed phase.
+	
+	\section{\label{sec:level4} Non-standard percolation of round cells}
+	
+	\subsection{Susceptibility}
+	
+	As mentioned above, round cells exhibit a percolation transition. We can see how the largest cluster size vary with density for different values of $N$ in Fig. \ref{fig:round_percolation} (a). To gain insight into the nature of this transition, we analyze the susceptibility $\chi$, defined as the fluctuations of the normalized size of the largest cluster $s_1=\frac{S_1}{N}$:
 	
 	\begin{equation}
-		\chi = N(\langle S_1^{2} \rangle - \langle S_1 \rangle^{2})
+		\chi = \frac{\langle S_1^{2} \rangle - \langle S_1 \rangle^{2}}{N}=N(\langle s_1^{2} \rangle - \langle s_1 \rangle^{2})
 	\end{equation}
 	
 	Fig. \ref{fig:round_percolation} (b) shows the susceptibility for different system sizes $N$. It can be observed that for every size, $\chi$ exhibits a pronounced peak near the critical density $\rho\approx0.86$.
@@ -268,92 +279,177 @@ aps,
 
 	For standard percolation in 2D, the exponent is $\frac{\gamma}{2\nu} \approx 0.896$. This is very different from the value we obtain. Moreover, for a standard discontinuous transition (first-order), the susceptibility is expected to scale linearly with the system volume ($\chi \propto L^{2}\propto N$). Our observed exponent of $\approx 1.592$ is super-extensive (greater than 1). This implies that the fluctuations grow faster than the system size itself, indicating an anomalously violent regime.
 	
-	\subsection{Cluster Size distribution excluding the giant component}
+	\subsection{Cluster size distributions across the transition}
 
+	To further characterize the nature of this percolation-like transition, we analyze the distribution of cluster sizes. We define the cluster size distribution as
 	
-	Finally, we analyze the cluster size distribution $n_s$ (excluding the giant component) in the steady state. According to percolation theory, this distribution is expected to exhibit a power-law behavior $n_s(s) \propto s^{-\tau}$ near the critical point $\rho_c$.
-
+	$$
+	n_s=\frac{N_s}{N},
+	$$
+	
+	where $N_s$ is the number of clusters of size $s$ and $N$ is the total number of cells. We first study the distribution excluding the largest component, in order to isolate the statistics of finite clusters.
 		
-	Figure \ref{fig:distribution} displays these distributions for different densities, with the critical density $\rho_c$ (derived from the susceptibility peak) highlighted in every panel.
+	Figure \ref{fig:percolation_round_distribution} displays these distributions for different densities, with the critical density $\rho_c$ (derived from the susceptibility peak) highlighted in every panel. At low densities, as it can be seen in inset (i), the distribution decays rapidly and exhibits a clear cutoff, indicating that round cell clusters remain small and spatially localized.
+	
+	As the density increases, the distribution progressively broadens and the cutoff shifts toward larger cluster sizes. Interestingly, for intermediate subcritical densities, the distributions already extend over a broad range of sizes, although they still display a clear cutoff.
 
+	Near the critical density, the cluster size distribution does not extend significantly beyond the largest subcritical clusters, but the cutoff becomes much less pronounced and the distribution becomes approximately scale-free. This indicates the coexistence of structures over multiple scales.
+	
+	Above the transition, finite clusters remain broadly distributed over a similar size range, although their statistical weight decreases as an increasing fraction of the system becomes absorbed into the giant jammed component. For sufficiently high densities ($\rho \gtrapprox0.88$), all round cells belong to the giant cluster and finite clusters become negligible.
+	
+	
 	\begin{figure}[h]
-		\centering
-		
-		% Primera fila (2 imágenes)
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/percolation_round/2_normalized_cluster_distribution_no_giant_N=10000_sub_round.png}
-			\caption{}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/percolation_round/3_normalized_cluster_distribution_no_giant_N=10000_near_sub_round.png}
-			\caption{}
-		\end{subfigure}
-		
-		\vspace{0.1cm}
-		
-		% Segunda fila (1 imagen centrada)
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/percolation_round/4_normalized_cluster_distribution_no_giant_N=10000_near_after_round}
-			\caption{}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/percolation_round/6_normalized_cluster_distribution_fit_N=10000.png}
-			\caption{}
-		\end{subfigure}		
-		\caption{\label{fig:distribution} Cluster size distribution without the giant component.
-		(a) and (b) correspond to densities below $\rho_c$: (a) for densitiesn significantly below and (b) approaching $\rho_c$. Panel (c) shows the regime of high densities. Panel (d) displays the fit of the power law of the cluster size distribution in the critical density.
-		}
+		\centering %agregue esto
+		\includegraphics[width=0.5\textwidth]{images/percolation_round/cluster_distribution/cluster_round_distribution_without_giant.eps} %agregue el width
+		\caption{\label{fig:percolation_round_distribution} Cluster size distribution without the giant component. Inset (i) shows the regime of densities below $\rho_c$ and (ii) the regime of high densities.}
 	\end{figure}
 
-	At low densities (a), the distribution follows a power law for small sizes but is truncated by a cut-off at larger sizes. As the density approaches the critical point (b), this cut-off tends to disappear. At $\rho_c$, the cut-off effectively disappears, and the distribution exhibits a pure power-law decay.
+	To quantify the apparent scale-free behavior at the transition, we fit the cluster size distribution at the critical density to a power law,
 	
-	The physical interpretation may be that below the critical point, the correlation length is finite, so the maximum cluster size is limited. In addition, at low densities, the curve lies slightly above the critical one. This happens because there is a large number of small clusters in the system.
+	$$
+	n_s \sim s^{-\tau}.
+	$$
 	
-	At the critical point, fluctuations of all sizes exist. However, once the threshold is crossed (panel c), the giant component absorbs most of the cells. Therefore, the distribution of the remaining clusters decays rapidly, leaving only small fragments isolated from the giant structure.
+	The distribution is approximately compatible with a power-law decay over an extended intermediate range, yielding an effective exponent
 	
-	If we fit the power-law in the critical density, we obtain $\tau \approx 0.90$ for $N=10.000$, as it is shown in figure \ref{fig:distribution} (d). However, this exponent change with $N$ due to finite-size effects.
+	$$
+	\tau \approx 0.9,
+	$$
 	
-	In usual percolation, the relation $2<\tau<3$ is typically be satisfied. Therefore, our result is in contrast with usual percolation. This may be associated with the explosive nature of the transition. There are a lot of macroscopic clusters that grow independently, creating an excess of large clusters just before the abrupt formation of the giant component.
+	for $N=10.000$, as it is shown in figure \ref{fig:tau}.  Although finite-size effects prevent a precise scaling determination, the effective exponent remains close to this value across the explored system sizes.
 	
-	\subsection{Cluster Size distribution with the giant component}
+	In usual percolation, the relation $2<\tau<3$ is typically be satisfied. Therefore, our result is in contrast with usual percolation, indicating an anomalous enhancement of large finite clusters near the transition.
 	
-	\subsection{Different Mechanism for Percolation}
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.4\textwidth]{images/percolation_round/6_normalized_cluster_distribution_fit_N=10000.png} %agregue el width
+		\caption{\label{fig:tau} Fit of $\tau$ for $N=10000$.}
+	\end{figure}
+	
+	This picture becomes clearer when the giant component is included in the analysis, as shown in Fig. \ref{fig:cluster_size_distribution_giant}. At low densities, the full cluster size distribution remains essentially unchanged, confirming the absence of a dominant connected structure. However, near the critical density, a pronounced peak emerges at very large cluster sizes, revealing the formation of a macroscopic component while finite clusters still persist over a broad range of scales.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.4\textwidth]{images/percolation_round/1_normalized_cluster_distribution_N=10000_all_round_with_giant.png} %agregue el width
+		\caption{\label{fig:cluster_size_distribution_giant} Cluster size distribution considering the giant component.}
+	\end{figure}
 		
-	These results show that, although round cells percolate, the mechanism is not the usual one. The combination of an abrupt jump in the largest cluster size and the power law in the distributions is a key feature of hybrid phase transitions. In percolation, we have found two different type of percolations that can be associated with our problem.
+	\subsection{Discussion Mechanism for Percolation}
 		
-	On one hand, explosive percolation happens when the system avoids the creation of a giant cluster by minimizng the size of the clusters that are being combined. One example is the product rule: two links are chosen and only the one with the minimum result between the product of each cluster is kept. This can be associated with the appearance of a huge second cluster size before the transition.
-	
-	On the other hand, bootstrap percolation has an analogy with the mechanism that our system follows. In bootstrap percolation, nodes are either active or inactive, and they deactivate if they have less than $k$ active neighbors. The analogy arises if we think of active nodes as round cells. Thus, cells deactivate (elongate) if they have few active neighbors (if they have enough space).
-	
-	SEGUIR ELABORANDO, ESCRIBIR MÁS SOBRE EL MECANISMO DE BOOTSTRAP Y LAS AVALANCHAS...
-	
-	\section{\label{sec:level5} Analysis of the unjammed branch}
+	These results show that, although round cells percolate, the underlying mechanism differs from standard percolation. The combination of a continuous growth of the largest cluster followed by an abrupt jump, together with the broad cluster size distributions near the transition, is reminiscent of hybrid phase transitions. In percolation, we have found two different type of percolations that can be associated with our problem.
 		
-	As previously established, the system can reach two distinct steady states: a jammed state, where all cells remain round and the system is structurally blocked, and an unjammed state, characterized by cell elongation and collective motion. In this section, we provide an analysis of the unjammed branch. While Section \ref{sec:level3} examined the cluster structure across all realizations, averaging near the transition can lead to an artificial suppression of the physical observables. For instance, the system polarization vanishes at high densities primarily due to the increasing prevalence of jammed configurations. Therefore, focusing exclusively on the active branch allows us to characterize the intrinsic properties of the fluid phase.
+	On one hand, explosive percolation happens when the system avoids the creation of a giant cluster by minimizng the size of the clusters that are being combined. One example is the product rule: two links are chosen and only the one with the minimum result between the product of each cluster is kept. 
+	
+	On the other hand, bootstrap percolation provides a more natural analogy with the mechanism considered here. In bootstrap percolation, nodes are initially occupied with probability $p$, and are subsequently removed if they have fewer than $k$ occupied neighbors.
+	
+	An important feature of bootstrap percolation is the possibility of cascades or avalanches, where the removal of one node triggers the subsequent deactivation of many others.
+	
+	The analogy with our case can be understood by associating occupied nodes in bootstrap percolation with round cells in our system. In that framework, the occupation probability $p$ plays a role analogous to the density $\rho$, since increasing $\rho$ raises the probability of finding crowded regions. The local threshold $k$, which determines whether a node remains occupied, can be related to the amount of available space surrounding each cell.
+	
+	To further explore this analogy, one relevant quantity is the fraction of active cells, 
+	$f_a$, shown in Figure \ref{fig:fraction_active}. As expected, $f_a$ is finite at low densities and decreases as 
+	$\rho$ increases. For small system sizes, this decrease appears relatively smooth, whereas for larger systems a jump emerges near the transition. This behavior is consistent with the idea that local changes in cell shape may trigger collective rearrangements involving a large fraction of the system.
+	
+	\begin{figure}[h]
+		\centering %agregue esto
+		\includegraphics[width=0.4\textwidth]{images/percolation_round/fraction_active_mean_separated.png} %agregue el width
+		\caption{\label{fig:fraction_active} Fraction of active cells ($f_a$) as a function of $\rho$ for different system sizes.}
+	\end{figure}
+	
+	\section{\label{sec:level5} Analysis of elongated clusters and active migration}
+		
+	In this section, we provide an analysis of the clusters of elongated cells. As previously established, the system can reach two distinct steady states: a jammed state, where all cells remain round and the system is structurally blocked, and an unjammed state, characterized by cell elongation and collective motion. We take into account that averaging across all realizations near the transition can lead to an artificial suppression of the physical observables. For instance, the system polarization may vanish at high densities primarily due to the increasing prevalence of jammed configurations. Therefore, we analyze the system both by considering all realizations and by focusing exclusively on the active branch.
 	
 	\subsection{Analysis of clusters of elongated cells}
 	
-	The behavior of the elongated phase as a function of density $\rho$ is summarized in Figure \ref{fig:clusters_elongated}. Panel (a) shows that as the density increases, the total number of clusters normalized by the system size decreases. This suggests that the system tends to coalesce into fewer structures as the available space becomes more constrained. In panel (b) it can be seen that the size of the largest cluster is consistently much larger than the second largest one across most of the density range. Interestingly, $S_{max}$ reaches a maximum value near $\rho = 0.6$. Outside this range, for both very low and very high densities, the size of the dominant cluster decreases. Finally, panel (c) displays the ratio $\frac{S_2}{S_{max}}$, while panel (d) the parameter $\frac{S_{max}-S_2}{S_{max}+S_2}$. In both, we can see that he region between $\rho = 0.6$ and $\rho = 0.77$ marks the point of maximum dominance of the largest cluster, indicating the formation of a single, well-defined oncostream.
+	We have already analyzed the structure of clusters in Section \ref{sec:level3}. Here, we delve deeper into the emergence of a dominant cluster by defining the parameter
+	
+	$$
+	\psi = \frac{S_{max}-S_2}{S_{max}+S_2}.
+	$$
+	
+	The behavior of $\psi$ as a function of density $\rho$ is shown in Figure \ref{fig:order_parameter_elongated}, both considering all realizations and only the unjammed branch. The results show that the region near $\rho = 0.7$ corresponds to the point of maximum dominance of the largest cluster, indicating the formation of a well-defined oncostream. 
 	
 	\begin{figure}[h]
-	\centering
-	
+		\centering
+		
 		% Primera fila (2 imágenes)
 		\begin{subfigure}{0.48\columnwidth}
 			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/cluster_density_elongated.png}
+			\includegraphics[width=\linewidth]{images/elongated_clusters/total_order_parameter.png}
 			\caption{}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.48\columnwidth}
 			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/elongated_cluster_connectivity.png}
+			\includegraphics[width=\linewidth]{images/elongated_clusters/unjammed_order_parameter.png}
+			\caption{}
+		\end{subfigure}
+		
+		\caption{\label{fig:order_parameter_elongated} $\psi$ as a function of $\rho$. Considering:
+			(a) all realizations.
+			(b) only the unjammed branch.
+		}
+		
+	\end{figure}
+
+	In both cases, after the maximum, $\psi$ decreases after this maximum. When all realizations are taken into account, $\psi$ eventually drops to zero, whereas when only the unjammed branch is considered, it remains finite. This difference highlights the impact of jammed configurations.
+	
+	It is important to note that this maximum does not correspond to a percolation transition. Although the largest cluster becomes clearly dominant over the rest, it does not span the entire system, and a significant fraction of cells still belongs to smaller clusters. This suggests that the system reaches an optimal structural organization, where a dominant cluster emerges while preserving a broad distribution of cluster sizes.
+	
+	We can gain further insight into this behavior by analyzing the cluster size distributions shown in Figure \ref{fig:cluster_distributions_elongated}. In panel (a), the giant cluster is included, while in panel (b) it is excluded. It is important to note that the red curve highlights $\rho=0.7$, which does not correspond to a critical point but to the density at which $\psi$ is maximal.
+
+	The distributions show a broad range of cluster sizes, indicating the coexistence of structures over multiple scales. When the giant cluster is included, a clear peak appears at large sizes, reflecting the presence of a dominant cluster. However, when the giant cluster is removed, the distribution remains broad, showing that a significant number of clusters of different sizes still persist.
+
+	\begin{figure}[h]
+		\centering
+		
+		% Primera fila (2 imágenes)
+		\begin{subfigure}{0.48\columnwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/elongated_clusters/1_normalized_cluster_distribution_N=10000_all_dens=0_70_elongated.png}
+			\caption{}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.48\columnwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/elongated_clusters/1_normalized_cluster_distribution_N=10000_all_dens=0_70_elongated_without_giant.png}
+			\caption{}
+		\end{subfigure}
+		
+		\caption{\label{fig:cluster_distributions_elongated} Cluster size distribution. The giant cluster is
+			(a) included.
+			(b) excluded.
+		}
+		
+	\end{figure}
+		
+	\subsection{Analysis of polarization of elongated cells}
+	
+	Finally, we analyze how ordered the final structures are. To do so, we use the well-known polar order parameter ($P$), computed considering only the elongated cells:
+	
+	$$ P = \frac{1}{N_e} \sqrt{\left(\sum_{i=1}^{N_e} \sin (\varphi_i)\right)^2+\left(\sum_{i=1}^{N_e} \cos (\varphi_i)\right)^2}, $$
+	
+	as well as a modified version in which the normalization includes all cells (both elongated and round), denoted by $\hat{P}$:
+	
+	$$ \hat{P} = \frac{1}{N} \sqrt{\left(\sum_{i=1}^{N_e} \sin (\varphi_i)\right)^2+\left(\sum_{i=1}^{N_e} \cos (\varphi_i)\right)^2}. $$
+	
+	Figure \ref{fig:polarization} shows the behavior of these order parameters as a function of the density for different system sizes. Panels (a) and (b) correspond to the global polarization, while panels (c) and (d) show the local polarization, averaging either over all realizations or only over the unjammed branch.
+	
+
+	\begin{figure}[h]
+		\centering
+		
+		% Primera fila (2 imágenes)
+		\begin{subfigure}{0.48\columnwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/elongated_clusters/total_global_polarization.png}
+			\caption{}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.48\columnwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/elongated_clusters/unjammed_global_polarization.png}
 			\caption{}
 		\end{subfigure}
 		
@@ -362,60 +458,34 @@ aps,
 		% Segunda fila (1 imagen centrada)
 		\begin{subfigure}{0.48\columnwidth}
 			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/fragmentation.png}
+			\includegraphics[width=\linewidth]{images/elongated_clusters/total_local_order.png}
 			\caption{}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.48\columnwidth}
 			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/order_parameter.png}
-			\caption{}
-		\end{subfigure}		
-		\caption{\label{fig:clusters_elongated} Analysis of the elongated clusters in the unjammed branch for $N=1000, 2000, 3000, 5000, 10000$ as a function of density.
-			(a) Cluster density. Number of total elongated clusters over number of total cells ($\frac{N_{clusters}}{N}$).
-			(b) Both largest ($S_{max}$) and second largest ($S_{2}$) clusters.
-			(c) Fragmentation ratio ($S_2/S_{max}$).
-			(d) Order Parameter ($\frac{S_{max}-S_2}{S_{max}+S_2}$).
-		}
-		
-	\end{figure}
-	
-	Based on these observations, we can identify distinct regimes for the active phase. At low densities, the system forms many independent clusters and the largest one does not yet dominate the system's dynamics. This makes that this regime exhibits a mosaic-like structure. Approximately between $\rho = 0.6$ and $\rho = 0.7$, appears a giant cluster that governs the collective motion. As the system approaches the jamming point, the number of clusters decreases, but they all become comparable in size.
-
-
-	\subsection{Analysis of polarization of elongated cells}
-	
-	Finally, we can study how ordered the final structures are. In order to do so, we use the well-known polar order parameter ($P$) calculated using the number of elongated cells as follows:
-	
-	$$ P = \frac{1}{N_e} \sqrt{\left(\sum_{i=1}^{N_e} \sin (\varphi_i)\right)^2+\left(\sum_{i=1}^{N_e} \cos (\varphi_i)\right)^2}, $$
-	
-	as well as the same polar parameter as before but dividing by all the cells (including the rounds), ($\hat{P}$):
-	
-	$$ \hat{P} = \frac{1}{N} \sqrt{\left(\sum_{i=1}^{N_e} \sin (\varphi_i)\right)^2+\left(\sum_{i=1}^{N_e} \cos (\varphi_i)\right)^2}. $$
-	
-	Figure ... displays how this order parameter varies in function of the density for all the values of $N$. Panel (a) shows the global order parameter while panel (b) the local. For the last, ... EXPLICAR BIEN ESTO.
-	
-	\begin{figure}[h]
-		\centering
-		
-		% Primera fila (2 imágenes)
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/global_polarization.png}
-			\caption{}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.48\columnwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/elongated_clusters/local_order.png}
+			\includegraphics[width=\linewidth]{images/elongated_clusters/unjammed_local_order.png}
 			\caption{}
 		\end{subfigure}
 		
-		\caption{\label{fig:clusters_elongated_polarization} Polarization of the clusters of elongated cells in the unjammed branch for $N=1000, 2000, 3000, 5000, 10000$ as a function of density.
-			(a) Global Polar Order.
-			(b) Local Polar Order.
-		}
-		
+		\caption{\label{fig:polarization} Polarization ($P$ and $\hat{P}$)of the system as a funtion of $\rho$. 
+			(a) Global polarization considering every realization. 
+			(b) Global polarization considering only the unjammed branch. 
+			(c) Local polarization considering every realization. 
+			(d) Local polarization considering only the unjammed branch.}
 	\end{figure}
 
+	For the local order parameter, the system is divided into boxes of size comparable to the maximum cell length, and the polarization is computed using the cells within neighboring boxes.
+	
+	For the global polarization, we observe that when all realizations are considered (panel (a)), the system is ordered at low densities, but the polarization decreases as density increases. At high densities, $P$ increases again, while $\hat{P}$	decays to zero. This behavior is largely due to the presence of jammed configurations. In particular, when only a few cells remain elongated, the normalization in $P$ makes it easier to obtain large values.
+	
+	When focusing only on the unjammed branch (panel (b)), this effect disappears. In this case, the polarization remains relatively constant ath high densities. Moreover, as the system size increases, the curves tend to flatten, suggesting that for large $N$ the system remains weakly polarized, independently of density.
+	
+	A similar behavior is observed for the local polarization (panels (c) and (d)). As the system size increases, the local order parameter remains approximately constant but takes high values across the entire active regime (excluding the jammed state).
+	
+	Therefore, we conclude that, for large system sizes, the system is weakly polarized at the global level but strongly polarized at the local level, across all densities in the unjammed phase. This indicates that density does not significantly affect the degree of alignment of elongated cells, but rather controls whether the system becomes jammed and how clusters are spatially organized.
+
+
+	\section{\label{sec:level6} Temporal emergence of patterns}
+	
 \end{document}
